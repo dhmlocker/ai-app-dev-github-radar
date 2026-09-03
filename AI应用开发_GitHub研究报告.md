@@ -1,11 +1,11 @@
 # AI 应用开发岗位：GitHub 资源研究报告
 
 **作者：Manus AI**  
-**数据快照：2026/9/3 20:48:33（GitHub 公开接口）**
+**数据快照：2026/9/3 20:51:45（GitHub 公开接口）**
 
 ## 研究结论
 
-本研究聚焦的不是通用的“AI 学习仓库”，而是能够帮助开发者交付 **LLM 应用、RAG 系统、智能体工作流与生产级质量保障** 的 GitHub 资源。筛选时同时观察了仓库的用途清晰度、社区采纳度、公开许可和近期更新。最终入选的 12 个仓库累计约 **2,112,717 Stars** 与 **376,822 Forks**；这不是岗位需求的统计样本，而是衡量公开开发者关注度与生态成熟度的辅助信号。[1] [2] [7] [8]
+本研究聚焦的不是通用的“AI 学习仓库”，而是能够帮助开发者交付 **LLM 应用、RAG 系统、智能体工作流与生产级质量保障** 的 GitHub 资源。筛选时同时观察了仓库的用途清晰度、社区采纳度、公开许可和近期更新。最终入选的 12 个仓库累计约 **2,112,724 Stars** 与 **376,825 Forks**；这不是岗位需求的统计样本，而是衡量公开开发者关注度与生态成熟度的辅助信号。[1] [2] [7] [8]
 
 > AI 应用开发岗位的核心，不是从零训练基础模型，而是把模型、私有数据、业务工具、评测机制与运行环境整合为可控的软件产品。路线仓库也将这一进程概括为从 API/提示工程，到 RAG/智能体，再到部署、LLMOps 与微调的递进过程。[12]
 
@@ -17,14 +17,14 @@
 | 2 | [`huggingface/transformers`][2] | 多模态 | undefined | 164,741 | Apache-2.0 | undefined/100 |
 | 3 | [`open-webui/open-webui`][3] | 模型服务与部署 | undefined | 150,798 | NOASSERTION | undefined/100 |
 | 4 | [`langchain-ai/langchain`][4] | 应用框架 | 基础 → 进阶 | 145,572 | MIT | 94/100 |
-| 5 | [`Shubhamsaboo/awesome-llm-apps`][5] | 作品集案例 | 基础 → 高阶 | 135,864 | Apache-2.0 | 95/100 |
-| 6 | [`ggml-org/llama.cpp`][6] | 模型服务与部署 | undefined | 126,881 | MIT | undefined/100 |
+| 5 | [`Shubhamsaboo/awesome-llm-apps`][5] | 作品集案例 | 基础 → 高阶 | 135,865 | Apache-2.0 | 95/100 |
+| 6 | [`ggml-org/llama.cpp`][6] | 模型服务与部署 | undefined | 126,882 | MIT | undefined/100 |
 | 7 | [`microsoft/generative-ai-for-beginners`][7] | 学习资源 | 基础 | 119,066 | MIT | 88/100 |
 | 8 | [`vllm-project/vllm`][8] | 推理与部署 | 进阶 → 高阶 | 90,873 | Apache-2.0 | 78/100 |
 | 9 | [`elastic/elasticsearch`][9] | RAG 与向量数据库 | undefined | 77,884 | NOASSERTION | undefined/100 |
 | 10 | [`openai/openai-cookbook`][10] | 学习资源 | 基础 | 75,717 | MIT | 86/100 |
-| 11 | [`microsoft/autogen`][11] | 智能体编排 | undefined | 60,789 | CC-BY-4.0 | undefined/100 |
-| 12 | [`crewAIInc/crewAI`][12] | 智能体编排 | undefined | 58,042 | MIT | undefined/100 |
+| 11 | [`microsoft/autogen`][11] | 智能体编排 | undefined | 60,790 | CC-BY-4.0 | undefined/100 |
+| 12 | [`crewAIInc/crewAI`][12] | 智能体编排 | undefined | 58,043 | MIT | undefined/100 |
 | 13 | [`BerriAI/litellm`][13] | 应用框架 | undefined | 57,930 | NOASSERTION | undefined/100 |
 | 14 | [`run-llama/llama_index`][14] | RAG 与数据 | 进阶 | 51,997 | MIT | 90/100 |
 | 15 | [`milvus-io/milvus`][15] | RAG 与向量数据库 | undefined | 45,950 | Apache-2.0 | undefined/100 |
@@ -33,12 +33,12 @@
 | 18 | [`stanfordnlp/dspy`][18] | 应用框架 | undefined | 37,747 | MIT | undefined/100 |
 | 19 | [`microsoft/graphrag`][19] | RAG 与向量数据库 | undefined | 35,812 | MIT | undefined/100 |
 | 20 | [`qdrant/qdrant`][20] | RAG 与数据 | 进阶 | 34,362 | Apache-2.0 | 89/100 |
-| 21 | [`langfuse/langfuse`][21] | 质量保障 | 进阶 → 高阶 | 34,149 | NOASSERTION | 93/100 |
+| 21 | [`langfuse/langfuse`][21] | 质量保障 | 进阶 → 高阶 | 34,151 | NOASSERTION | 93/100 |
 | 22 | [`openai/openai-python`][22] | 应用框架 | undefined | 31,545 | Apache-2.0 | undefined/100 |
 | 23 | [`chroma-core/chroma`][23] | RAG 与向量数据库 | undefined | 29,214 | Apache-2.0 | undefined/100 |
 | 24 | [`huggingface/smolagents`][24] | 智能体编排 | undefined | 29,140 | Apache-2.0 | undefined/100 |
 | 25 | [`microsoft/semantic-kernel`][25] | 应用框架 | 基础 → 进阶 | 28,527 | MIT | 82/100 |
-| 26 | [`mlflow/mlflow`][26] | 模型服务与部署 | undefined | 27,794 | Apache-2.0 | undefined/100 |
+| 26 | [`mlflow/mlflow`][26] | 模型服务与部署 | undefined | 27,795 | Apache-2.0 | undefined/100 |
 | 27 | [`huggingface/lerobot`][27] | 多模态 | undefined | 27,184 | Apache-2.0 | undefined/100 |
 | 28 | [`vercel/ai`][28] | 应用框架 | undefined | 26,565 | NOASSERTION | undefined/100 |
 | 29 | [`deepset-ai/haystack`][29] | 应用框架 | undefined | 26,403 | Apache-2.0 | undefined/100 |

@@ -13,7 +13,7 @@ pnpm build
 
 ## 数据口径
 
-`research_data.json` 当前快照包含 **44 个仓库**，字段包括 `fullName`、`url`、`description`、`stars`、`forks`、`openIssues`、`language`、`topics`、`license`、`createdAt`、`updatedAt`、`pushedAt`、`archived`、`defaultBranch` 和 `category`。数据由 GitHub 官方公开 REST API `/repos/{owner}/{repo}` 读取，页面展示快照日期。`research_analysis.json` 由分析脚本生成分类汇总、岗位适配信号和研究报告所需的统计。
+`research_data.json` 当前快照包含 **44 个仓库**，字段包括 `fullName`、`url`、`description`、`stars`、`forks`、`openIssues`、`language`、`topics`、`license`、`createdAt`、`updatedAt`、`pushedAt`、`archived`、`defaultBranch`、`category`、`role` 和 `jobFitNote`。其中岗位字段是本研究的分析标注，不是 GitHub 原始字段。数据由 GitHub 官方公开 REST API `/repos/{owner}/{repo}` 读取，页面展示快照日期。`research_analysis.json` 由分析脚本生成分类汇总、岗位适配信号和研究报告所需的统计。
 
 趋势区**不伪造历史 Star 增长**：使用真实的 `pushedAt` / `updatedAt` 将仓库分为近 7 天、近 30 天、近 90 天和更早，并统计各分类 90 天内活跃仓库比例。这些是 GitHub 活跃度信号，不是就业市场统计、岗位需求统计或技术选型承诺。
 

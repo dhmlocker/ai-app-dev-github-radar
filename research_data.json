@@ -1,5 +1,5 @@
 {
-  "snapshotAt": "2026-09-03T12:48:33.171Z",
+  "snapshotAt": "2026-09-03T12:51:45.134Z",
   "source": "GitHub REST API /repos/{owner}/{repo}",
   "records": [
     {
@@ -38,7 +38,9 @@
       "pushedAt": "2026-09-03T08:17:49Z",
       "archived": false,
       "defaultBranch": "master",
-      "category": "应用框架"
+      "category": "应用框架",
+      "role": "应用框架",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "langchain-ai/langgraph",
@@ -74,7 +76,9 @@
       "pushedAt": "2026-09-03T00:38:34Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "智能体编排"
+      "category": "智能体编排",
+      "role": "智能体编排",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "run-llama/llama_index",
@@ -82,7 +86,7 @@
       "description": "LlamaIndex is the leading document agent and OCR platform",
       "stars": 51997,
       "forks": 8075,
-      "openIssues": 695,
+      "openIssues": 696,
       "language": "Python",
       "topics": [
         "agents",
@@ -102,7 +106,9 @@
       "pushedAt": "2026-09-03T03:05:30Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "RAG 与向量数据库"
+      "category": "RAG 与向量数据库",
+      "role": "RAG 与向量数据库",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "microsoft/semantic-kernel",
@@ -125,7 +131,9 @@
       "pushedAt": "2026-09-03T10:53:05Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "应用框架"
+      "category": "应用框架",
+      "role": "应用框架",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "qdrant/qdrant",
@@ -163,7 +171,9 @@
       "pushedAt": "2026-09-03T12:38:30Z",
       "archived": false,
       "defaultBranch": "master",
-      "category": "RAG 与向量数据库"
+      "category": "RAG 与向量数据库",
+      "role": "RAG 与向量数据库",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "vllm-project/vllm",
@@ -171,7 +181,7 @@
       "description": "A high-throughput and memory-efficient inference and serving engine for LLMs",
       "stars": 90873,
       "forks": 21640,
-      "openIssues": 7432,
+      "openIssues": 7433,
       "language": "Python",
       "topics": [
         "amd",
@@ -201,15 +211,17 @@
       "pushedAt": "2026-09-03T12:02:49Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "模型服务与部署"
+      "category": "模型服务与部署",
+      "role": "模型服务与部署",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "langfuse/langfuse",
       "url": "https://github.com/langfuse/langfuse",
       "description": "🪢 Open source AI engineering platform: LLM evals, observability, metrics, prompt management, playground, datasets. Integrates with OpenTelemetry, LangChain, OpenAI SDK, LiteLLM, and more. 🍊YC W23 ",
-      "stars": 34149,
+      "stars": 34151,
       "forks": 3687,
-      "openIssues": 879,
+      "openIssues": 881,
       "language": "TypeScript",
       "topics": [
         "analytics",
@@ -234,11 +246,13 @@
       ],
       "license": "NOASSERTION",
       "createdAt": "2023-05-18T17:47:09Z",
-      "updatedAt": "2026-09-03T12:24:19Z",
-      "pushedAt": "2026-09-03T12:48:03Z",
+      "updatedAt": "2026-09-03T12:48:58Z",
+      "pushedAt": "2026-09-03T12:51:05Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "评测与可观测性"
+      "category": "评测与可观测性",
+      "role": "评测与可观测性",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "promptfoo/promptfoo",
@@ -274,7 +288,9 @@
       "pushedAt": "2026-09-03T12:37:31Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "评测与可观测性"
+      "category": "评测与可观测性",
+      "role": "评测与可观测性",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "openai/openai-cookbook",
@@ -296,14 +312,16 @@
       "pushedAt": "2026-09-03T01:51:08Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "学习资源与作品集"
+      "category": "学习资源与作品集",
+      "role": "学习资源与作品集",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "microsoft/generative-ai-for-beginners",
       "url": "https://github.com/microsoft/generative-ai-for-beginners",
       "description": "21 Lessons, Get Started Building with Generative AI ",
       "stars": 119066,
-      "forks": 62736,
+      "forks": 62737,
       "openIssues": 28,
       "language": "Jupyter Notebook",
       "topics": [
@@ -328,13 +346,15 @@
       "pushedAt": "2026-09-03T03:43:38Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "学习资源与作品集"
+      "category": "学习资源与作品集",
+      "role": "学习资源与作品集",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "Shubhamsaboo/awesome-llm-apps",
       "url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
       "description": "100+ AI Agents, Agent Skills and RAG Apps - Free and Open Source.",
-      "stars": 135864,
+      "stars": 135865,
       "forks": 19983,
       "openIssues": 5,
       "language": "Python",
@@ -346,11 +366,13 @@
       ],
       "license": "Apache-2.0",
       "createdAt": "2024-04-29T05:30:25Z",
-      "updatedAt": "2026-09-03T12:26:32Z",
+      "updatedAt": "2026-09-03T12:50:51Z",
       "pushedAt": "2026-09-02T23:13:03Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "学习资源与作品集"
+      "category": "学习资源与作品集",
+      "role": "学习资源与作品集",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "dswh/ai-engineer-roadmap",
@@ -367,7 +389,9 @@
       "pushedAt": "2024-06-05T06:16:59Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "学习资源与作品集"
+      "category": "学习资源与作品集",
+      "role": "学习资源与作品集",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "vercel/ai",
@@ -400,14 +424,16 @@
       "pushedAt": "2026-09-03T10:53:52Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "应用框架"
+      "category": "应用框架",
+      "role": "应用框架",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "BerriAI/litellm",
       "url": "https://github.com/BerriAI/litellm",
       "description": "The fastest, litest AI Gateway. Rust core with Python SDK. Call 100+ LLM APIs in OpenAI (or native) format with cost tracking, guardrails, load balancing, and logging [Bedrock, Azure, OpenAI, Anthropic, OpenAI, VertexAI, vLLM, Nvidia NIM]",
       "stars": 57930,
-      "forks": 11129,
+      "forks": 11130,
       "openIssues": 4945,
       "language": "Python",
       "topics": [
@@ -430,17 +456,19 @@
       ],
       "license": "NOASSERTION",
       "createdAt": "2023-07-27T00:09:52Z",
-      "updatedAt": "2026-09-03T12:11:22Z",
+      "updatedAt": "2026-09-03T12:50:34Z",
       "pushedAt": "2026-09-03T12:44:52Z",
       "archived": false,
       "defaultBranch": "litellm_internal_staging",
-      "category": "应用框架"
+      "category": "应用框架",
+      "role": "应用框架",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "crewAIInc/crewAI",
       "url": "https://github.com/crewAIInc/crewAI",
       "description": "Framework for orchestrating role-playing, autonomous AI agents. By fostering collaborative intelligence, CrewAI empowers agents to work together seamlessly, tackling complex tasks.",
-      "stars": 58042,
+      "stars": 58043,
       "forks": 8323,
       "openIssues": 708,
       "language": "Python",
@@ -453,17 +481,19 @@
       ],
       "license": "MIT",
       "createdAt": "2023-10-27T03:26:59Z",
-      "updatedAt": "2026-09-03T12:43:33Z",
+      "updatedAt": "2026-09-03T12:48:45Z",
       "pushedAt": "2026-09-03T10:56:45Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "智能体编排"
+      "category": "智能体编排",
+      "role": "智能体编排",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "microsoft/autogen",
       "url": "https://github.com/microsoft/autogen",
       "description": "A programming framework for agentic AI",
-      "stars": 60789,
+      "stars": 60790,
       "forks": 9177,
       "openIssues": 1031,
       "language": "Python",
@@ -481,11 +511,13 @@
       ],
       "license": "CC-BY-4.0",
       "createdAt": "2023-08-18T11:43:45Z",
-      "updatedAt": "2026-09-03T12:46:33Z",
+      "updatedAt": "2026-09-03T12:49:32Z",
       "pushedAt": "2026-04-15T11:59:09Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "智能体编排"
+      "category": "智能体编排",
+      "role": "智能体编排",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "run-llama/llama-agents",
@@ -511,7 +543,9 @@
       "pushedAt": "2026-09-01T16:10:38Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "智能体编排"
+      "category": "智能体编排",
+      "role": "智能体编排",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "deepset-ai/haystack",
@@ -549,7 +583,9 @@
       "pushedAt": "2026-09-03T12:41:14Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "应用框架"
+      "category": "应用框架",
+      "role": "应用框架",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "weaviate/weaviate",
@@ -557,7 +593,7 @@
       "description": "Weaviate is an open-source vector database that stores both objects and vectors, allowing for the combination of vector search with structured filtering with the fault tolerance and scalability of a cloud-native database​.",
       "stars": 16784,
       "forks": 1386,
-      "openIssues": 724,
+      "openIssues": 722,
       "language": "Go",
       "topics": [
         "approximate-nearest-neighbor-search",
@@ -584,10 +620,12 @@
       "license": "BSD-3-Clause",
       "createdAt": "2016-03-30T15:03:17Z",
       "updatedAt": "2026-09-03T10:56:24Z",
-      "pushedAt": "2026-09-03T12:23:12Z",
+      "pushedAt": "2026-09-03T12:50:47Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "RAG 与向量数据库"
+      "category": "RAG 与向量数据库",
+      "role": "RAG 与向量数据库",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "milvus-io/milvus",
@@ -623,7 +661,9 @@
       "pushedAt": "2026-09-03T12:39:30Z",
       "archived": false,
       "defaultBranch": "master",
-      "category": "RAG 与向量数据库"
+      "category": "RAG 与向量数据库",
+      "role": "RAG 与向量数据库",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "chroma-core/chroma",
@@ -647,7 +687,9 @@
       "pushedAt": "2026-09-03T00:37:41Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "RAG 与向量数据库"
+      "category": "RAG 与向量数据库",
+      "role": "RAG 与向量数据库",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "pgvector/pgvector",
@@ -667,7 +709,9 @@
       "pushedAt": "2026-08-20T03:47:50Z",
       "archived": false,
       "defaultBranch": "master",
-      "category": "RAG 与向量数据库"
+      "category": "RAG 与向量数据库",
+      "role": "RAG 与向量数据库",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "elastic/elasticsearch",
@@ -675,7 +719,7 @@
       "description": "Free and Open Source, Distributed, RESTful Search Engine",
       "stars": 77884,
       "forks": 26070,
-      "openIssues": 6027,
+      "openIssues": 6028,
       "language": "Java",
       "topics": [
         "elasticsearch",
@@ -688,7 +732,9 @@
       "pushedAt": "2026-09-03T12:46:14Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "RAG 与向量数据库"
+      "category": "RAG 与向量数据库",
+      "role": "RAG 与向量数据库",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "stanfordnlp/dspy",
@@ -705,7 +751,9 @@
       "pushedAt": "2026-09-01T12:53:25Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "应用框架"
+      "category": "应用框架",
+      "role": "应用框架",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "huggingface/transformers",
@@ -742,7 +790,9 @@
       "pushedAt": "2026-09-03T12:43:43Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "多模态"
+      "category": "多模态",
+      "role": "多模态",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "huggingface/lerobot",
@@ -759,7 +809,9 @@
       "pushedAt": "2026-09-03T10:49:24Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "多模态"
+      "category": "多模态",
+      "role": "多模态",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "huggingface/smolagents",
@@ -776,7 +828,9 @@
       "pushedAt": "2026-08-25T18:36:00Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "智能体编排"
+      "category": "智能体编排",
+      "role": "智能体编排",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "open-webui/open-webui",
@@ -809,7 +863,9 @@
       "pushedAt": "2026-09-02T02:12:21Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "模型服务与部署"
+      "category": "模型服务与部署",
+      "role": "模型服务与部署",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "ollama/ollama",
@@ -842,26 +898,30 @@
       "pushedAt": "2026-09-03T03:39:26Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "模型服务与部署"
+      "category": "模型服务与部署",
+      "role": "模型服务与部署",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "ggml-org/llama.cpp",
       "url": "https://github.com/ggml-org/llama.cpp",
       "description": "LLM inference in C/C++",
-      "stars": 126881,
+      "stars": 126882,
       "forks": 22699,
-      "openIssues": 2385,
+      "openIssues": 2386,
       "language": "C++",
       "topics": [
         "ggml"
       ],
       "license": "MIT",
       "createdAt": "2023-03-10T18:58:00Z",
-      "updatedAt": "2026-09-03T12:43:30Z",
+      "updatedAt": "2026-09-03T12:49:24Z",
       "pushedAt": "2026-09-03T12:44:25Z",
       "archived": false,
       "defaultBranch": "master",
-      "category": "模型服务与部署"
+      "category": "模型服务与部署",
+      "role": "模型服务与部署",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "lm-sys/FastChat",
@@ -878,7 +938,9 @@
       "pushedAt": "2026-05-01T00:25:53Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "模型服务与部署"
+      "category": "模型服务与部署",
+      "role": "模型服务与部署",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "openai/openai-python",
@@ -898,7 +960,9 @@
       "pushedAt": "2026-09-03T06:09:05Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "应用框架"
+      "category": "应用框架",
+      "role": "应用框架",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "anthropics/anthropic-sdk-python",
@@ -915,7 +979,9 @@
       "pushedAt": "2026-09-03T02:59:50Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "应用框架"
+      "category": "应用框架",
+      "role": "应用框架",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "google-gemini/deprecated-generative-ai-python",
@@ -932,7 +998,9 @@
       "pushedAt": "2025-12-16T17:45:53Z",
       "archived": true,
       "defaultBranch": "main",
-      "category": "应用框架"
+      "category": "应用框架",
+      "role": "应用框架",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "microsoft/LLMLingua",
@@ -949,7 +1017,9 @@
       "pushedAt": "2026-04-08T18:59:13Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "AI 安全"
+      "category": "AI 安全",
+      "role": "AI 安全",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "NVIDIA-NeMo/Guardrails",
@@ -976,7 +1046,9 @@
       "pushedAt": "2026-09-02T17:13:40Z",
       "archived": false,
       "defaultBranch": "develop",
-      "category": "AI 安全"
+      "category": "AI 安全",
+      "role": "AI 安全",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "guardrails-ai/guardrails",
@@ -999,7 +1071,9 @@
       "pushedAt": "2026-09-01T17:54:38Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "AI 安全"
+      "category": "AI 安全",
+      "role": "AI 安全",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "truera/trulens",
@@ -1030,14 +1104,16 @@
       "pushedAt": "2026-09-03T01:57:20Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "评测与可观测性"
+      "category": "评测与可观测性",
+      "role": "评测与可观测性",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "Arize-ai/phoenix",
       "url": "https://github.com/Arize-ai/phoenix",
       "description": "AI Observability & Evaluation",
       "stars": 11307,
-      "forks": 1093,
+      "forks": 1094,
       "openIssues": 968,
       "language": "Python",
       "topics": [
@@ -1064,7 +1140,9 @@
       "pushedAt": "2026-09-03T11:30:57Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "评测与可观测性"
+      "category": "评测与可观测性",
+      "role": "评测与可观测性",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "wandb/wandb",
@@ -1101,13 +1179,15 @@
       "pushedAt": "2026-09-03T02:15:37Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "评测与可观测性"
+      "category": "评测与可观测性",
+      "role": "评测与可观测性",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "mlflow/mlflow",
       "url": "https://github.com/mlflow/mlflow",
       "description": "The open source AI engineering platform for agents, LLMs, and ML models. MLflow enables teams of all sizes to debug, evaluate, monitor, and optimize production-quality AI applications while controlling costs and managing access to models and data.",
-      "stars": 27794,
+      "stars": 27795,
       "forks": 6250,
       "openIssues": 2059,
       "language": "Python",
@@ -1133,11 +1213,13 @@
       ],
       "license": "Apache-2.0",
       "createdAt": "2018-06-05T16:05:58Z",
-      "updatedAt": "2026-09-03T12:19:33Z",
+      "updatedAt": "2026-09-03T12:50:34Z",
       "pushedAt": "2026-09-03T12:17:05Z",
       "archived": false,
       "defaultBranch": "master",
-      "category": "模型服务与部署"
+      "category": "模型服务与部署",
+      "role": "模型服务与部署",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "microsoft/graphrag",
@@ -1162,7 +1244,9 @@
       "pushedAt": "2026-09-02T01:41:10Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "RAG 与向量数据库"
+      "category": "RAG 与向量数据库",
+      "role": "RAG 与向量数据库",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "stanfordnlp/pyreft",
@@ -1183,7 +1267,9 @@
       "pushedAt": "2026-03-05T11:16:52Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "评测与可观测性"
+      "category": "评测与可观测性",
+      "role": "评测与可观测性",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     },
     {
       "fullName": "cloudflare/ai",
@@ -1200,7 +1286,9 @@
       "pushedAt": "2026-08-05T10:13:46Z",
       "archived": false,
       "defaultBranch": "main",
-      "category": "多模态"
+      "category": "多模态",
+      "role": "多模态",
+      "jobFitNote": "用于识别该能力层的真实工程实践；请结合仓库文档与个人项目验证。"
     }
   ]
 }
