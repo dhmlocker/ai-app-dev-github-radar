@@ -1,0 +1,11 @@
+{
+  "snapshotAt": "2026-09-03",
+  "note": "公开官方入口；访问状态可能变化，页面不将单一链接作为完成标准。",
+  "resources": [
+    {"id":"hf-agents","title":"Agents Course","provider":"Hugging Face","type":"Course","url":"https://huggingface.co/learn/agents-course/en/unit0/introduction","stage":"智能体与工具调用"},
+    {"id":"fsdl","title":"Full Stack Deep Learning","provider":"FSDL","type":"Course","url":"https://fullstackdeeplearning.com/","stage":"生产化评测与交付"},
+    {"id":"rag-course","title":"Retrieval Augmented Generation","provider":"DeepLearning.AI","type":"Course","url":"https://www.deeplearning.ai/courses/retrieval-augmented-generation","stage":"RAG 与检索"},
+    {"id":"hf-learn","title":"Hugging Face Learn","provider":"Hugging Face","type":"Docs","url":"https://huggingface.co/learn","stage":"模型与 API 基础"},
+    {"id":"made-ml","title":"Made With ML","provider":"Made With ML","type":"Playbook","url":"https://madewithml.com/","stage":"生产化评测与交付"}
+  ]
+}

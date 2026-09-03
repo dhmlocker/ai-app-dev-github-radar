@@ -55,3 +55,12 @@ cp research_data.json client/src/data/research_data.json
 | `scripts/fetch_github_metadata.mjs` | 公开 API 采集脚本 |
 | `scripts/analyze_research.mjs` | 统计分析脚本 |
 | `migration_assets/` | 跨项目迁移的原始视觉资产 |
+
+
+## v3.0 多路线学习系统
+
+项目名称升级为 **AI 应用工程训练场**，桌面端内容重排为独立模块：总览、资源探索、学习路径、工具训练、面试准备、能力提升和我的工作台。GitHub 仓库与课程、文档、Playbook 使用统一资源卡片，不做来源视觉分区。
+
+当前提供四条路线：AI 应用开发岗完整路线、AI 工程工具熟悉路线、编码与工程能力提升路线、AI 应用开发面试路线。完整路线包含 16 个任务；工具、能力提升和面试模块各包含 6 个训练任务。每个任务均包含目标、步骤、验收、产出物和常见偏差。
+
+本轮重点修复 v2.0 桌面端问题：减少固定大框和无效留白，使用桌面网格、阶段目录与详情面板承载信息；移动端保留原有单列和折叠菜单体验，并做回归验证。状态保存在 `radar-status-v3`、`radar-checks-v3` 和 `radar-favorites-v3`，纯静态项目不提供账号或跨设备同步；工作台可导出 JSON 手动迁移。
