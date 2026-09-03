@@ -1,0 +1,625 @@
+{
+  "snapshotAt": "2026-09-03T11:36:13.748Z",
+  "totalStars": 782533,
+  "totalForks": 169870,
+  "repos": [
+    {
+      "fullName": "langchain-ai/langchain",
+      "url": "https://github.com/langchain-ai/langchain",
+      "description": "The agent engineering platform.",
+      "stars": 145567,
+      "forks": 24292,
+      "openIssues": 444,
+      "language": "Python",
+      "topics": [
+        "agents",
+        "ai",
+        "ai-agents",
+        "anthropic",
+        "chatgpt",
+        "deepagents",
+        "enterprise",
+        "framework",
+        "gemini",
+        "generative-ai",
+        "langchain",
+        "langgraph",
+        "llm",
+        "multiagent",
+        "open-source",
+        "openai",
+        "pydantic",
+        "python",
+        "rag",
+        "typescript"
+      ],
+      "license": "MIT",
+      "createdAt": "2022-10-17T02:58:36Z",
+      "updatedAt": "2026-09-03T11:29:12Z",
+      "pushedAt": "2026-09-03T08:17:49Z",
+      "archived": false,
+      "defaultBranch": "master",
+      "category": "应用框架",
+      "stage": "基础 → 进阶",
+      "role": "把模型调用、提示词、检索和工具整合成应用",
+      "skills": [
+        "模型 API",
+        "提示词与结构化输出",
+        "工具调用",
+        "RAG 基础"
+      ],
+      "fit": 94,
+      "verdict": "首选的应用集成入口；建议以一个垂直场景助手作为练习载体。"
+    },
+    {
+      "fullName": "Shubhamsaboo/awesome-llm-apps",
+      "url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
+      "description": "100+ AI Agents, Agent Skills and RAG Apps - Free and Open Source.",
+      "stars": 135857,
+      "forks": 19982,
+      "openIssues": 5,
+      "language": "Python",
+      "topics": [
+        "agents",
+        "llms",
+        "python",
+        "rag"
+      ],
+      "license": "Apache-2.0",
+      "createdAt": "2024-04-29T05:30:25Z",
+      "updatedAt": "2026-09-03T11:33:33Z",
+      "pushedAt": "2026-09-02T23:13:03Z",
+      "archived": false,
+      "defaultBranch": "main",
+      "category": "作品集案例",
+      "stage": "基础 → 高阶",
+      "role": "覆盖 Agents、Agent Skills、RAG 的可参考实现集合",
+      "skills": [
+        "需求拆解",
+        "场景复刻",
+        "架构阅读",
+        "作品集改造"
+      ],
+      "fit": 95,
+      "verdict": "不要只 Fork；选一个案例替换真实数据源、加入评测和部署说明。"
+    },
+    {
+      "fullName": "microsoft/generative-ai-for-beginners",
+      "url": "https://github.com/microsoft/generative-ai-for-beginners",
+      "description": "21 Lessons, Get Started Building with Generative AI ",
+      "stars": 119060,
+      "forks": 62732,
+      "openIssues": 28,
+      "language": "Jupyter Notebook",
+      "topics": [
+        "ai",
+        "azure",
+        "chatgpt",
+        "dall-e",
+        "generative-ai",
+        "generativeai",
+        "gpt",
+        "language-model",
+        "llms",
+        "microsoft-for-beginners",
+        "openai",
+        "prompt-engineering",
+        "semantic-search",
+        "transformers"
+      ],
+      "license": "MIT",
+      "createdAt": "2023-06-19T16:28:59Z",
+      "updatedAt": "2026-09-03T11:10:12Z",
+      "pushedAt": "2026-09-03T03:43:38Z",
+      "archived": false,
+      "defaultBranch": "main",
+      "category": "学习资源",
+      "stage": "基础",
+      "role": "21 课生成式 AI 入门与动手课程",
+      "skills": [
+        "提示工程",
+        "语义搜索",
+        "应用设计",
+        "负责任 AI"
+      ],
+      "fit": 88,
+      "verdict": "适合系统建立生成式 AI 应用开发的基础词汇和第一个端到端原型。"
+    },
+    {
+      "fullName": "vllm-project/vllm",
+      "url": "https://github.com/vllm-project/vllm",
+      "description": "A high-throughput and memory-efficient inference and serving engine for LLMs",
+      "stars": 90869,
+      "forks": 21638,
+      "openIssues": 7419,
+      "language": "Python",
+      "topics": [
+        "amd",
+        "blackwell",
+        "cuda",
+        "deepseek",
+        "deepseek-v3",
+        "gpt",
+        "gpt-oss",
+        "inference",
+        "kimi",
+        "llama",
+        "llm",
+        "llm-serving",
+        "model-serving",
+        "moe",
+        "openai",
+        "pytorch",
+        "qwen",
+        "qwen3",
+        "tpu",
+        "transformer"
+      ],
+      "license": "Apache-2.0",
+      "createdAt": "2023-02-09T11:23:20Z",
+      "updatedAt": "2026-09-03T11:18:28Z",
+      "pushedAt": "2026-09-03T11:17:52Z",
+      "archived": false,
+      "defaultBranch": "main",
+      "category": "推理与部署",
+      "stage": "进阶 → 高阶",
+      "role": "高吞吐、内存效率导向的大模型推理与服务",
+      "skills": [
+        "模型服务",
+        "吞吐优化",
+        "GPU 推理",
+        "OpenAI 兼容接口"
+      ],
+      "fit": 78,
+      "verdict": "适用于需要理解开源模型服务、性能与成本权衡的岗位。"
+    },
+    {
+      "fullName": "openai/openai-cookbook",
+      "url": "https://github.com/openai/openai-cookbook",
+      "description": "Examples and guides for using the OpenAI API",
+      "stars": 75717,
+      "forks": 12796,
+      "openIssues": 293,
+      "language": "Jupyter Notebook",
+      "topics": [
+        "chatgpt",
+        "gpt-4",
+        "openai",
+        "openai-api"
+      ],
+      "license": "MIT",
+      "createdAt": "2022-03-11T02:08:53Z",
+      "updatedAt": "2026-09-03T11:15:16Z",
+      "pushedAt": "2026-09-03T01:51:08Z",
+      "archived": false,
+      "defaultBranch": "main",
+      "category": "学习资源",
+      "stage": "基础",
+      "role": "OpenAI API 的示例与指南集合",
+      "skills": [
+        "API 调用",
+        "结构化输出",
+        "函数调用",
+        "应用模式"
+      ],
+      "fit": 86,
+      "verdict": "适合作为模型能力与 SDK 使用方式的官方练习册。"
+    },
+    {
+      "fullName": "run-llama/llama_index",
+      "url": "https://github.com/run-llama/llama_index",
+      "description": "LlamaIndex is the leading document agent and OCR platform",
+      "stars": 51994,
+      "forks": 8075,
+      "openIssues": 695,
+      "language": "Python",
+      "topics": [
+        "agents",
+        "application",
+        "data",
+        "fine-tuning",
+        "framework",
+        "llamaindex",
+        "llm",
+        "multi-agents",
+        "rag",
+        "vector-database"
+      ],
+      "license": "MIT",
+      "createdAt": "2022-11-02T04:24:54Z",
+      "updatedAt": "2026-09-03T10:44:00Z",
+      "pushedAt": "2026-09-03T03:05:30Z",
+      "archived": false,
+      "defaultBranch": "main",
+      "category": "RAG 与数据",
+      "stage": "进阶",
+      "role": "将企业文档与数据源接入可检索的 LLM 应用",
+      "skills": [
+        "文档摄取",
+        "索引",
+        "检索策略",
+        "文档智能体"
+      ],
+      "fit": 90,
+      "verdict": "适合知识库问答、文档处理与数据密集型项目。"
+    },
+    {
+      "fullName": "langchain-ai/langgraph",
+      "url": "https://github.com/langchain-ai/langgraph",
+      "description": "Build resilient agents.",
+      "stars": 40982,
+      "forks": 6913,
+      "openIssues": 743,
+      "language": "Python",
+      "topics": [
+        "agents",
+        "ai",
+        "ai-agents",
+        "chatgpt",
+        "deepagents",
+        "enterprise",
+        "framework",
+        "gemini",
+        "generative-ai",
+        "langchain",
+        "langgraph",
+        "llm",
+        "multiagent",
+        "open-source",
+        "openai",
+        "pydantic",
+        "python",
+        "rag"
+      ],
+      "license": "MIT",
+      "createdAt": "2023-08-09T18:33:12Z",
+      "updatedAt": "2026-09-03T10:56:27Z",
+      "pushedAt": "2026-09-03T00:38:34Z",
+      "archived": false,
+      "defaultBranch": "main",
+      "category": "智能体编排",
+      "stage": "进阶",
+      "role": "构建有状态、可恢复、可人工审核的智能体工作流",
+      "skills": [
+        "状态机",
+        "任务编排",
+        "持久化",
+        "人工介入"
+      ],
+      "fit": 92,
+      "verdict": "适合把单轮 Demo 升级为可控的多步骤业务流程。"
+    },
+    {
+      "fullName": "qdrant/qdrant",
+      "url": "https://github.com/qdrant/qdrant",
+      "description": "Qdrant - High-performance, massive-scale Vector Database and Vector Search Engine for the next generation of AI. Also available in the cloud https://cloud.qdrant.io/",
+      "stars": 34361,
+      "forks": 2631,
+      "openIssues": 694,
+      "language": "Rust",
+      "topics": [
+        "ai-search",
+        "ai-search-engine",
+        "embeddings-similarity",
+        "hnsw",
+        "hybrid-search",
+        "image-search",
+        "knn-algorithm",
+        "machine-learning",
+        "mlops",
+        "nearest-neighbor-search",
+        "neural-network",
+        "neural-search",
+        "recommender-system",
+        "search",
+        "search-engine",
+        "search-engines",
+        "similarity-search",
+        "vector-database",
+        "vector-search",
+        "vector-search-engine"
+      ],
+      "license": "Apache-2.0",
+      "createdAt": "2020-05-30T21:37:01Z",
+      "updatedAt": "2026-09-03T11:20:23Z",
+      "pushedAt": "2026-09-03T11:19:46Z",
+      "archived": false,
+      "defaultBranch": "master",
+      "category": "RAG 与数据",
+      "stage": "进阶",
+      "role": "为语义检索与混合搜索提供向量数据库能力",
+      "skills": [
+        "向量检索",
+        "过滤",
+        "混合搜索",
+        "检索评估"
+      ],
+      "fit": 89,
+      "verdict": "RAG 项目从原型走向可维护数据层时的关键基础设施。"
+    },
+    {
+      "fullName": "langfuse/langfuse",
+      "url": "https://github.com/langfuse/langfuse",
+      "description": "🪢 Open source AI engineering platform: LLM evals, observability, metrics, prompt management, playground, datasets. Integrates with OpenTelemetry, LangChain, OpenAI SDK, LiteLLM, and more. 🍊YC W23 ",
+      "stars": 34146,
+      "forks": 3685,
+      "openIssues": 883,
+      "language": "TypeScript",
+      "topics": [
+        "analytics",
+        "autogen",
+        "evaluation",
+        "langchain",
+        "large-language-models",
+        "llama-index",
+        "llm",
+        "llm-evaluation",
+        "llm-observability",
+        "llmops",
+        "monitoring",
+        "observability",
+        "open-source",
+        "openai",
+        "playground",
+        "prompt-engineering",
+        "prompt-management",
+        "self-hosted",
+        "ycombinator"
+      ],
+      "license": "NOASSERTION",
+      "createdAt": "2023-05-18T17:47:09Z",
+      "updatedAt": "2026-09-03T11:16:56Z",
+      "pushedAt": "2026-09-03T11:35:01Z",
+      "archived": false,
+      "defaultBranch": "main",
+      "category": "质量保障",
+      "stage": "进阶 → 高阶",
+      "role": "提示词管理、追踪、评测、指标与调试",
+      "skills": [
+        "可观测性",
+        "评测数据集",
+        "提示词版本",
+        "成本与延迟分析"
+      ],
+      "fit": 93,
+      "verdict": "把“模型效果不错”变成可衡量、可迭代工程结论的关键工具。"
+    },
+    {
+      "fullName": "microsoft/semantic-kernel",
+      "url": "https://github.com/microsoft/semantic-kernel",
+      "description": "Integrate cutting-edge LLM technology quickly and easily into your apps",
+      "stars": 28527,
+      "forks": 4752,
+      "openIssues": 271,
+      "language": "C#",
+      "topics": [
+        "ai",
+        "artificial-intelligence",
+        "llm",
+        "openai",
+        "sdk"
+      ],
+      "license": "MIT",
+      "createdAt": "2023-02-27T17:39:42Z",
+      "updatedAt": "2026-09-03T10:43:54Z",
+      "pushedAt": "2026-09-03T10:53:05Z",
+      "archived": false,
+      "defaultBranch": "main",
+      "category": "应用框架",
+      "stage": "基础 → 进阶",
+      "role": "面向 .NET、Python、Java 的企业应用 LLM 集成",
+      "skills": [
+        "企业 SDK",
+        "插件",
+        "跨语言开发",
+        "服务集成"
+      ],
+      "fit": 82,
+      "verdict": "若目标岗位偏 Microsoft/.NET 技术栈，应优先纳入作品集。"
+    },
+    {
+      "fullName": "promptfoo/promptfoo",
+      "url": "https://github.com/promptfoo/promptfoo",
+      "description": "Test your prompts, agents, and RAGs. Red teaming/pentesting/vulnerability scanning for AI. Compare performance of GPT, Claude, Gemini, DeepSeek, and more. Simple declarative configs with command line and CI/CD integration.  Used by OpenAI and Anthropic.",
+      "stars": 24780,
+      "forks": 2257,
+      "openIssues": 571,
+      "language": "TypeScript",
+      "topics": [
+        "ci",
+        "ci-cd",
+        "cicd",
+        "evaluation",
+        "evaluation-framework",
+        "llm",
+        "llm-eval",
+        "llm-evaluation",
+        "llm-evaluation-framework",
+        "llmops",
+        "pentesting",
+        "prompt-engineering",
+        "prompt-testing",
+        "prompts",
+        "rag",
+        "red-teaming",
+        "testing",
+        "vulnerability-scanners"
+      ],
+      "license": "MIT",
+      "createdAt": "2023-04-28T15:48:49Z",
+      "updatedAt": "2026-09-03T10:23:51Z",
+      "pushedAt": "2026-09-03T11:29:56Z",
+      "archived": false,
+      "defaultBranch": "main",
+      "category": "质量保障",
+      "stage": "进阶 → 高阶",
+      "role": "提示词、RAG、智能体测试与 AI 红队扫描",
+      "skills": [
+        "测试集",
+        "回归测试",
+        "安全评测",
+        "CI/CD"
+      ],
+      "fit": 91,
+      "verdict": "建议在作品集项目中加入可重复的评测与安全检查命令。"
+    },
+    {
+      "fullName": "dswh/ai-engineer-roadmap",
+      "url": "https://github.com/dswh/ai-engineer-roadmap",
+      "description": "A roadmap describing the required skills, learning resources and sample tools to become an AI Engineer ",
+      "stars": 673,
+      "forks": 117,
+      "openIssues": 0,
+      "language": null,
+      "topics": [],
+      "license": "Apache-2.0",
+      "createdAt": "2024-04-16T12:15:21Z",
+      "updatedAt": "2026-08-31T11:06:45Z",
+      "pushedAt": "2024-06-05T06:16:59Z",
+      "archived": false,
+      "defaultBranch": "main",
+      "category": "学习资源",
+      "stage": "基础 → 高阶",
+      "role": "将 AI 工程能力划分为基础、中级、高级路线",
+      "skills": [
+        "学习规划",
+        "项目选题",
+        "能力盘点",
+        "LLMOps 视野"
+      ],
+      "fit": 80,
+      "verdict": "适合校准学习顺序；因近期代码提交较早，具体工具选择需结合主项目文档。"
+    }
+  ],
+  "categories": [
+    {
+      "name": "学习资源",
+      "count": 3,
+      "stars": 195450,
+      "averageFit": 85
+    },
+    {
+      "name": "应用框架",
+      "count": 2,
+      "stars": 174094,
+      "averageFit": 88
+    },
+    {
+      "name": "作品集案例",
+      "count": 1,
+      "stars": 135857,
+      "averageFit": 95
+    },
+    {
+      "name": "推理与部署",
+      "count": 1,
+      "stars": 90869,
+      "averageFit": 78
+    },
+    {
+      "name": "RAG 与数据",
+      "count": 2,
+      "stars": 86355,
+      "averageFit": 90
+    },
+    {
+      "name": "质量保障",
+      "count": 2,
+      "stars": 58926,
+      "averageFit": 92
+    },
+    {
+      "name": "智能体编排",
+      "count": 1,
+      "stars": 40982,
+      "averageFit": 92
+    }
+  ],
+  "skills": [
+    {
+      "name": "模型与 API 集成",
+      "score": 92,
+      "resources": [
+        "LangChain",
+        "OpenAI Cookbook",
+        "Generative AI for Beginners"
+      ]
+    },
+    {
+      "name": "RAG 与检索",
+      "score": 90,
+      "resources": [
+        "LlamaIndex",
+        "Qdrant",
+        "LangChain"
+      ]
+    },
+    {
+      "name": "智能体工作流",
+      "score": 88,
+      "resources": [
+        "LangGraph",
+        "LangChain",
+        "Awesome LLM Apps"
+      ]
+    },
+    {
+      "name": "评测与可观测性",
+      "score": 93,
+      "resources": [
+        "Langfuse",
+        "Promptfoo"
+      ]
+    },
+    {
+      "name": "部署与推理",
+      "score": 80,
+      "resources": [
+        "vLLM",
+        "LangGraph",
+        "Semantic Kernel"
+      ]
+    }
+  ],
+  "recommendedPath": [
+    {
+      "phase": "01",
+      "title": "做出可用的单场景助手",
+      "focus": "模型 API、提示词、结构化输出与简单 Web 界面",
+      "repos": [
+        "microsoft/generative-ai-for-beginners",
+        "openai/openai-cookbook",
+        "langchain-ai/langchain"
+      ]
+    },
+    {
+      "phase": "02",
+      "title": "让回答有证据",
+      "focus": "文档摄取、向量检索、引用来源与 RAG 评测",
+      "repos": [
+        "run-llama/llama_index",
+        "qdrant/qdrant",
+        "langfuse/langfuse"
+      ]
+    },
+    {
+      "phase": "03",
+      "title": "把对话改造成工作流",
+      "focus": "工具调用、状态、重试与人工审核",
+      "repos": [
+        "langchain-ai/langgraph",
+        "shubhamsaboo/awesome-llm-apps"
+      ]
+    },
+    {
+      "phase": "04",
+      "title": "为生产环境设护栏",
+      "focus": "提示词版本、回归评测、安全扫描、成本与吞吐",
+      "repos": [
+        "promptfoo/promptfoo",
+        "langfuse/langfuse",
+        "vllm-project/vllm"
+      ]
+    }
+  ]
+}

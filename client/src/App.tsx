@@ -1,3 +1,4 @@
+/** Design reminder — Signal Library: retain a light archival-paper theme for this research index. */
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
