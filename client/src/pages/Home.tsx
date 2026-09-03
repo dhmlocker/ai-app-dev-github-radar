@@ -1,330 +1,56 @@
-/**
- * Design reminder — Signal Library: editorial research index, warm archival paper,
- * ink typography, moss-green system cues, and signal-orange emphasis only for verified actions.
- */
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import {
-  ArrowDown,
-  ArrowUpRight,
-  BarChart3,
-  BookOpen,
-  CheckCircle2,
-  ChevronRight,
-  CircleDot,
-  Copy,
-  Download,
-  ExternalLink,
-  Filter,
-  Github,
-  Layers3,
-  Menu,
-  Radar,
-  Search,
-  Sparkles,
-  Target,
-  X,
-} from "lucide-react";
-import { useMemo, useState } from "react";
-import {
-  Bar,
-  BarChart,
-  Cell,
-  PolarAngleAxis,
-  PolarGrid,
-  Radar as RadarShape,
-  RadarChart,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
+import { useEffect, useMemo, useState } from "react";
+import { ArrowDown, ArrowUpRight, BarChart3, BookOpen, Check, ChevronRight, CircleDot, Copy, Download, ExternalLink, Filter, Github, Heart, Menu, Radar, Search, Share2, Star, Target, X } from "lucide-react";
+import { Bar, BarChart, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import data from "../data/research_data.json";
 
-type Repository = {
-  fullName: string;
-  url: string;
-  stars: number;
-  forks: number;
-  language: string;
-  license: string;
-  category: string;
-  stage: string;
-  role: string;
-  skills: string[];
-  fit: number;
-  verdict: string;
-};
+type Repo = (typeof data.records)[number] & { category: string };
+type Status = "todo" | "doing" | "done";
+type Task = { id:string; title:string; description:string; relatedRepos:string[]; verification:string; deliverable:string };
 
-const repoData: Repository[] = [
-  { fullName: "langchain-ai/langchain", url: "https://github.com/langchain-ai/langchain", stars: 145567, forks: 24292, language: "Python", license: "MIT", category: "应用框架", stage: "基础 → 进阶", role: "把模型调用、提示词、检索和工具整合成应用", skills: ["模型 API", "提示词与结构化输出", "工具调用", "RAG 基础"], fit: 94, verdict: "首选的应用集成入口；建议以一个垂直场景助手作为练习载体。" },
-  { fullName: "Shubhamsaboo/awesome-llm-apps", url: "https://github.com/Shubhamsaboo/awesome-llm-apps", stars: 135857, forks: 19982, language: "Python", license: "Apache-2.0", category: "作品集案例", stage: "基础 → 高阶", role: "覆盖 Agents、Agent Skills、RAG 的可参考实现集合", skills: ["需求拆解", "场景复刻", "架构阅读", "作品集改造"], fit: 95, verdict: "不要只 Fork；选一个案例替换真实数据源、加入评测和部署说明。" },
-  { fullName: "microsoft/generative-ai-for-beginners", url: "https://github.com/microsoft/generative-ai-for-beginners", stars: 119060, forks: 62732, language: "Jupyter", license: "MIT", category: "学习资源", stage: "基础", role: "21 课生成式 AI 入门与动手课程", skills: ["提示工程", "语义搜索", "应用设计", "负责任 AI"], fit: 88, verdict: "适合系统建立生成式 AI 应用开发的基础词汇和第一个端到端原型。" },
-  { fullName: "vllm-project/vllm", url: "https://github.com/vllm-project/vllm", stars: 90869, forks: 21638, language: "Python", license: "Apache-2.0", category: "推理与部署", stage: "进阶 → 高阶", role: "高吞吐、内存效率导向的大模型推理与服务", skills: ["模型服务", "吞吐优化", "GPU 推理", "OpenAI 兼容接口"], fit: 78, verdict: "适用于需要理解开源模型服务、性能与成本权衡的岗位。" },
-  { fullName: "openai/openai-cookbook", url: "https://github.com/openai/openai-cookbook", stars: 75717, forks: 12796, language: "Jupyter", license: "MIT", category: "学习资源", stage: "基础", role: "OpenAI API 的示例与指南集合", skills: ["API 调用", "结构化输出", "函数调用", "应用模式"], fit: 86, verdict: "适合作为模型能力与 SDK 使用方式的官方练习册。" },
-  { fullName: "run-llama/llama_index", url: "https://github.com/run-llama/llama_index", stars: 51994, forks: 8075, language: "Python", license: "MIT", category: "RAG 与数据", stage: "进阶", role: "将企业文档与数据源接入可检索的 LLM 应用", skills: ["文档摄取", "索引", "检索策略", "文档智能体"], fit: 90, verdict: "适合知识库问答、文档处理与数据密集型项目。" },
-  { fullName: "langchain-ai/langgraph", url: "https://github.com/langchain-ai/langgraph", stars: 40982, forks: 6913, language: "Python", license: "MIT", category: "智能体编排", stage: "进阶", role: "构建有状态、可恢复、可人工审核的智能体工作流", skills: ["状态机", "任务编排", "持久化", "人工介入"], fit: 92, verdict: "适合把单轮 Demo 升级为可控的多步骤业务流程。" },
-  { fullName: "qdrant/qdrant", url: "https://github.com/qdrant/qdrant", stars: 34361, forks: 2631, language: "Rust", license: "Apache-2.0", category: "RAG 与数据", stage: "进阶", role: "为语义检索与混合搜索提供向量数据库能力", skills: ["向量检索", "过滤", "混合搜索", "检索评估"], fit: 89, verdict: "RAG 项目从原型走向可维护数据层时的关键基础设施。" },
-  { fullName: "langfuse/langfuse", url: "https://github.com/langfuse/langfuse", stars: 34146, forks: 3685, language: "TypeScript", license: "MIT", category: "质量保障", stage: "进阶 → 高阶", role: "提示词管理、追踪、评测、指标与调试", skills: ["可观测性", "评测数据集", "提示词版本", "成本与延迟分析"], fit: 93, verdict: "把“模型效果不错”变成可衡量、可迭代工程结论的关键工具。" },
-  { fullName: "microsoft/semantic-kernel", url: "https://github.com/microsoft/semantic-kernel", stars: 28527, forks: 4752, language: "C#", license: "MIT", category: "应用框架", stage: "基础 → 进阶", role: "面向 .NET、Python、Java 的企业应用 LLM 集成", skills: ["企业 SDK", "插件", "跨语言开发", "服务集成"], fit: 82, verdict: "若目标岗位偏 Microsoft/.NET 技术栈，应优先纳入作品集。" },
-  { fullName: "promptfoo/promptfoo", url: "https://github.com/promptfoo/promptfoo", stars: 24780, forks: 2257, language: "TypeScript", license: "MIT", category: "质量保障", stage: "进阶 → 高阶", role: "提示词、RAG、智能体测试与 AI 红队扫描", skills: ["测试集", "回归测试", "安全评测", "CI/CD"], fit: 91, verdict: "建议在作品集项目中加入可重复的评测与安全检查命令。" },
-  { fullName: "dswh/ai-engineer-roadmap", url: "https://github.com/dswh/ai-engineer-roadmap", stars: 673, forks: 117, language: "—", license: "Apache-2.0", category: "学习资源", stage: "基础 → 高阶", role: "将 AI 工程能力划分为基础、中级、高级路线", skills: ["学习规划", "项目选题", "能力盘点", "LLMOps 视野"], fit: 80, verdict: "适合校准学习顺序；因近期代码推送较早，具体工具选择需结合主项目文档。" },
+const repos = data.records as Repo[];
+const snapshot = new Date(data.snapshotAt);
+const colors = ["#52745E", "#10202D", "#FF5C35", "#8197A2", "#B5A25B", "#B9694F", "#6B7A62", "#D18B55"];
+const stages = ["模型/API 基础", "RAG 与检索", "智能体工作流", "生产化评测与部署"];
+const tasks:Task[] = [
+ {id:"api-01",title:"完成一次结构化模型调用",description:"用官方 SDK 或兼容 API 发起请求，让模型返回符合 schema 的 JSON。",relatedRepos:["openai/openai-cookbook","vercel/ai"],verification:"API 调用成功，响应能被 JSON Schema 校验且错误可被捕获。",deliverable:"README、可复现命令和一段响应示例"},
+ {id:"api-02",title:"部署本地模型",description:"使用 Ollama 或 llama.cpp 在本机启动一个模型服务，并接入你的客户端。",relatedRepos:["ollama/ollama","ggml-org/llama.cpp"],verification:"能够通过 API 调用本地模型并返回结构化结果。",deliverable:"README、运行截图或可复现命令"},
+ {id:"rag-01",title:"建立可引用的文档索引",description:"导入 10 份真实文档，完成切分、嵌入、向量写入和带来源检索。",relatedRepos:["run-llama/llama_index","qdrant/qdrant"],verification:"每条回答都能返回相关文档名、页码或 chunk id。",deliverable:"小型知识库、数据字典和检索日志"},
+ {id:"rag-02",title:"制作 RAG 回归集",description:"为你的场景写 15 个问题和参考答案，比较不同 chunk 与 top-k 配置。",relatedRepos:["microsoft/graphrag","langfuse/langfuse"],verification:"至少记录命中率、答案相关性和失败案例，并能重复运行。",deliverable:"JSONL 评测集、结果表和改进结论"},
+ {id:"agent-01",title:"把工具调用编排成状态图",description:"实现一个包含规划、工具调用、重试和最终回答的多步骤工作流。",relatedRepos:["langchain-ai/langgraph","crewAIInc/crewAI"],verification:"工作流可从中断点恢复，失败节点有明确重试或人工介入策略。",deliverable:"状态图、运行日志和异常分支说明"},
+ {id:"agent-02",title:"加入人工审核与权限边界",description:"为高风险工具增加审批节点，限制 agent 可读写的资源范围。",relatedRepos:["microsoft/autogen","NVIDIA/NeMo-Guardrails"],verification:"未经批准的高风险动作不会执行，并有审计记录。",deliverable:"威胁模型、审批截图和安全测试用例"},
+ {id:"prod-01",title:"接入追踪与成本观测",description:"记录每次调用的 prompt 版本、延迟、token、错误和用户反馈。",relatedRepos:["langfuse/langfuse","Arize-ai/phoenix"],verification:"能按一次请求串起完整 trace，并定位慢请求或高成本节点。",deliverable:"观测面板截图、指标定义和告警阈值"},
+ {id:"prod-02",title:"把评测和安全检查放进 CI",description:"用固定测试集比较 prompt/模型变更，并运行红队或注入攻击扫描。",relatedRepos:["promptfoo/promptfoo","guardrails-ai/guardrails"],verification:"Pull Request 中能自动生成评测结果，低于阈值时阻止合并。",deliverable:"CI 配置、评测报告和失败样例"},
 ];
 
-const categoryData = [
-  { name: "学习资源", stars: 195450, color: "#52745E" },
-  { name: "应用框架", stars: 174094, color: "#10202D" },
-  { name: "作品集案例", stars: 135857, color: "#FF5C35" },
-  { name: "推理与部署", stars: 90869, color: "#8197A2" },
-  { name: "RAG 与数据", stars: 86355, color: "#B5A25B" },
-  { name: "质量保障", stars: 58926, color: "#344C5C" },
-  { name: "智能体编排", stars: 40982, color: "#B9694F" },
-];
+const fmt=(n:number)=>new Intl.NumberFormat("zh-CN").format(n);
+const compact=(n:number)=>n>99999?`${(n/10000).toFixed(1)}万`:fmt(n);
+const daysSince=(v:string)=>Math.floor((Date.now()-new Date(v).getTime())/86400000);
+const freshness=(v:string)=>daysSince(v)<=7?"近 7 天":daysSince(v)<=30?"近 30 天":daysSince(v)<=90?"近 90 天":"更早";
+const fit=(r:Repo)=>Math.min(98,Math.max(62,70+(r.license!=="NOASSERTION"?7:0)+(daysSince(r.pushedAt)<=30?12:0)+(r.openIssues<1000?6:0)));
+const role=(r:Repo)=>({"应用框架":"连接模型能力与产品交互","RAG 与向量数据库":"让应用拥有可检索的真实数据","智能体编排":"把多步骤任务变成可控工作流","多模态":"处理文本、图像、音频等复合输入","模型服务与部署":"把模型运行在本地或生产服务中","评测与可观测性":"让质量、成本和延迟可测量","AI 安全":"为模型输出与工具调用设置护栏","学习资源与作品集":"提供可复刻、可展示的学习材料"}[r.category]||"AI 应用开发基础设施");
 
-const skillData = [
-  { subject: "模型与 API", score: 92, fullMark: 100 },
-  { subject: "RAG 与检索", score: 90, fullMark: 100 },
-  { subject: "智能体工作流", score: 88, fullMark: 100 },
-  { subject: "评测与观测", score: 93, fullMark: 100 },
-  { subject: "部署与推理", score: 80, fullMark: 100 },
-];
+function download(name:string, body:string, type="text/markdown"){const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([body],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),100);}
+function Logo(){return <img className="logo-mark" src="/assets/github-radar-mark.png" alt="GitHub 雷达标志"/>}
 
-const learningPath = [
-  { step: "01", title: "做出可用的单场景助手", summary: "模型 API、提示词、结构化输出与简单 Web 界面", resources: "Generative AI for Beginners · OpenAI Cookbook · LangChain" },
-  { step: "02", title: "让回答有证据", summary: "文档摄取、向量检索、引用来源与 RAG 评测", resources: "LlamaIndex · Qdrant · Langfuse" },
-  { step: "03", title: "把对话改造成工作流", summary: "工具调用、状态、重试与人工审核", resources: "LangGraph · Awesome LLM Apps" },
-  { step: "04", title: "为生产环境设护栏", summary: "提示词版本、回归评测、安全扫描、成本与吞吐", resources: "Promptfoo · Langfuse · vLLM" },
-];
-
-const categories = ["全部", ...categoryData.map((item) => item.name)];
-const formatNumber = (value: number) => new Intl.NumberFormat("zh-CN").format(value);
-const formatCompact = (value: number) => `${(value / 10000).toFixed(value >= 100000 ? 1 : 2).replace(/\.0$/, "")} 万`;
-
-function MiniBadge({ children, color = "ink" }: { children: React.ReactNode; color?: "ink" | "orange" | "green" }) {
-  return <span className={`mini-badge mini-badge--${color}`}>{children}</span>;
+export default function Home(){
+ const params=new URLSearchParams(location.search);
+ const [category,setCategory]=useState(params.get("category")||"全部"); const [language,setLanguage]=useState(params.get("language")||"全部"); const [stage,setStage]=useState("全部"); const [fresh,setFresh]=useState("全部"); const [roleFilter,setRoleFilter]=useState("全部"); const [query,setQuery]=useState(params.get("q")||""); const [sort,setSort]=useState("stars"); const [selected,setSelected]=useState<Repo>(repos.find(r=>r.fullName===params.get("repo"))||repos[0]); const [favorites,setFavorites]=useState<string[]>(()=>JSON.parse(localStorage.getItem("radar-favorites")||"[]")); const [progress,setProgress]=useState<Record<string,Status>>(()=>JSON.parse(localStorage.getItem("radar-progress")||"{}")); const [mobileNav,setMobileNav]=useState(false);
+ const categories=["全部",...Array.from(new Set(repos.map(r=>r.category)))]; const languages=["全部",...Array.from(new Set(repos.map(r=>r.language))).sort()]; const roles=["全部","模型 API","RAG 与检索","智能体工作流","评测与观测","部署与推理"];
+ const filtered=useMemo(()=>repos.filter(r=>{const q=query.toLowerCase(); const text=[r.fullName,r.description,r.language,r.category,...r.topics].join(" ").toLowerCase(); return (category==="全部"||r.category===category)&&(language==="全部"||r.language===language)&&(fresh==="全部"||freshness(r.pushedAt)===fresh)&&(roleFilter==="全部"||({"模型 API":"应用框架","RAG 与检索":"RAG 与向量数据库","智能体工作流":"智能体编排","评测与观测":"评测与可观测性","部署与推理":"模型服务与部署"}[roleFilter]===r.category))&&(!q||text.includes(q));}).sort((a,b)=>sort==="stars"?b.stars-a.stars:sort==="fresh"?new Date(b.pushedAt).getTime()-new Date(a.pushedAt).getTime():a.fullName.localeCompare(b.fullName)),[category,language,fresh,roleFilter,query,sort]);
+ const categoryStats=useMemo(()=>categories.slice(1).map((name,i)=>{const list=repos.filter(r=>r.category===name);return{name,count:list.length,stars:list.reduce((s,r)=>s+r.stars,0),active:Math.round(list.filter(r=>daysSince(r.pushedAt)<=90).length/list.length*100),color:colors[i%colors.length]}}),[categories]);
+ const done=Object.values(progress).filter(v=>v==="done").length; const doing=Object.values(progress).filter(v=>v==="doing").length;
+ useEffect(()=>{localStorage.setItem("radar-favorites",JSON.stringify(favorites))},[favorites]); useEffect(()=>{localStorage.setItem("radar-progress",JSON.stringify(progress))},[progress]);
+ const setTask=(id:string,status:Status)=>setProgress(p=>({...p,[id]:status}));
+ const share=()=>{const u=new URL(location.href);u.searchParams.set("category",category);u.searchParams.set("language",language);u.searchParams.set("q",query);u.searchParams.set("repo",selected.fullName);navigator.clipboard?.writeText(u.toString());history.replaceState(null,"",u);};
+ const exportReport=(json=false)=>{const fav=repos.filter(r=>favorites.includes(r.fullName));const lines=[`# AI 应用开发 GitHub 雷达｜个人工作台`,`\n数据快照：${snapshot.toLocaleDateString("zh-CN")}（GitHub 公开 API）`,`\n## 我的进度\n- 已完成：${done}/${tasks.length}\n- 进行中：${doing}\n- 剩余：${tasks.length-done}\n- 下一步建议：${tasks.find(t=>progress[t.id]!=="done")?.title||"回顾并发布作品集"}`,`\n## 收藏仓库\n${fav.map(r=>`- [${r.fullName}](${r.url}) · ${fmt(r.stars)} Stars · ${r.category}`).join("\n")||"- 暂无收藏"}`,`\n## 已完成任务\n${tasks.filter(t=>progress[t.id]==="done").map(t=>`- ${t.title}：${t.deliverable}`).join("\n")||"- 暂无"}`,`\n> 说明：本地浏览器保存收藏和进度；纯静态网页不提供跨设备同步，请下载此报告备份。`].join("\n"); download(json?"github-radar-progress.json":"github-radar-progress.md",json?JSON.stringify({snapshotAt:data.snapshotAt,favorites:fav.map(r=>r.fullName),progress,next:tasks.find(t=>progress[t.id]!=="done")?.id},null,2):lines,json?"application/json":"text/markdown")};
+ return <div className="site-shell"><header className="topbar"><a className="brand" href="#top"><Logo/><span className="brand-lockup"><strong>GitHub 雷达</strong><small>AI 应用开发工作台</small></span></a><nav className="desktop-nav"><a href="#overview">生态总览</a><a href="#directory">资源目录</a><a href="#path">学习路径</a><a href="#method">研究方法</a></nav><div className="topbar-actions"><span className="snapshot"><CircleDot size={13}/>快照 · {snapshot.toLocaleDateString("zh-CN")}</span><button className="export-btn" onClick={()=>exportReport(false)}><Download size={15}/>导出进度</button><button className="mobile-menu" onClick={()=>setMobileNav(!mobileNav)}>{mobileNav?<X size={19}/>:<Menu size={19}/>}</button></div>{mobileNav&&<nav className="mobile-nav"><a href="#overview">生态总览</a><a href="#directory">资源目录</a><a href="#path">学习路径</a><a href="#method">研究方法</a></nav>}</header>
+ <main id="top"><section className="hero-section"><img className="hero-art" src="/assets/github-radar-hero.png" alt="开源生态雷达图"/><div className="hero-copy"><div className="eyebrow"><span className="eyebrow-dot"/> RESEARCH WORKBENCH / 2026</div><h1>从 GitHub 信号<br/><em>到岗位能力。</em></h1><p>把公开仓库快照、维护新鲜度、可执行任务和个人进度放在同一张研究桌上。看得到来源，也做得出验证。</p><div className="hero-cta-row"><button className="signal-button" onClick={()=>document.querySelector("#directory")?.scrollIntoView()}>查看 {repos.length} 个样本 <ArrowDown size={17}/></button><button className="quiet-action" onClick={share}><Share2 size={15}/>分享当前筛选</button></div></div><div className="hero-stat-sheet"><div className="sheet-head"><span>研究样本</span><span>01 / 01</span></div><div className="sheet-main-stat"><strong>{repos.length}</strong><span>个<br/>开源资源</span></div><div className="stat-rule"/><div className="sheet-grid"><div><small>累计 Stars</small><b>{compact(repos.reduce((s,r)=>s+r.stars,0))}</b></div><div><small>累计 Forks</small><b>{compact(repos.reduce((s,r)=>s+r.forks,0))}</b></div><div><small>任务进度</small><b>{done}/{tasks.length}</b></div><div><small>资源类别</small><b>{categories.length-1}</b></div></div></div><div className="hero-footnote"><span>注</span> 指标来自 GitHub 公开元数据快照；活跃度信号不等于就业市场统计。</div></section>
+ <section className="page-frame" id="overview"><aside className="section-index"><span>01</span><div/><p>生态<br/>总览</p></aside><div className="section-content"><div className="section-heading"><div><p className="kicker">生态读数</p><h2>热度指向入口，<br/><em>新鲜度提示维护。</em></h2></div><p className="heading-note">用最近 pushed_at 将样本分成 7 / 30 / 90 天与更早；图表会跟随目录筛选。它描述 GitHub 活跃度，不代表岗位需求。</p></div><div className="overview-grid"><article className="chart-panel chart-panel--bars"><div className="panel-title"><span><BarChart3 size={17}/>类别关注度与维护率</span><small>Stars / 90 天活跃</small></div><div className="bar-chart-wrap"><ResponsiveContainer width="100%" height="100%"><BarChart data={categoryStats} layout="vertical" margin={{top:0,right:28,left:4,bottom:0}}><XAxis type="number" hide/><YAxis dataKey="name" type="category" width={102} tickLine={false} axisLine={false} tick={{fill:"#52606C",fontSize:10}}/><Tooltip formatter={(v:number,n:string)=>[n==="stars"?`${fmt(v)} Stars`:`${v}%`,n==="stars"?"累计关注":"90 天活跃"]}/><Bar dataKey="stars" radius={[0,3,3,0]} barSize={15}>{categoryStats.map(x=><Cell key={x.name} fill={x.color}/>)}</Bar></BarChart></ResponsiveContainer></div><p className="panel-caption">点击下方目录分类或筛选器即可联动资源清单；活跃仓库定义为 pushed_at 在快照前 90 天内。</p></article><article className="signal-note"><span className="signal-note-number">/ SIGNAL 02</span><Target size={19}/><h3>维护新鲜度是工程判断的第一层信号</h3><p>近 7 天、30 天、90 天和更早分组，帮助你把“热门”与“仍在迭代”分开阅读。</p><a href="#directory">去目录验证 <ArrowUpRight size={14}/></a></article><article className="chart-panel freshness-panel"><div className="panel-title"><span><Radar size={17}/>新鲜度分布</span><small>pushed_at</small></div><div className="freshness-bars">{["近 7 天","近 30 天","近 90 天","更早"].map((label,i)=>{const n=repos.filter(r=>freshness(r.pushedAt)===label).length;return <button key={label} onClick={()=>setFresh(label)} className={fresh===label?"is-active":""}><b>{String(n).padStart(2,"0")}</b><span>{label}</span><i style={{width:`${Math.max(4,n/repos.length*100)}%`}}/></button>})}</div></article></div></div></section>
+ <section className="directory-section" id="directory"><div className="page-frame directory-frame"><aside className="section-index section-index--light"><span>02</span><div/><p>资源<br/>目录</p></aside><div className="section-content"><div className="directory-head"><div><p className="kicker kicker--light">可执行索引</p><h2>按你的下一步，<br/><em>找到该读的仓库。</em></h2></div><p>收藏、筛选、排序，再把仓库直接挂到学习任务。点击任一条目查看真实指标和练习建议。</p></div><div className="directory-controls"><div className="filter-scroll">{categories.map(c=><button key={c} className={`filter-pill ${category===c?"is-active":""}`} onClick={()=>setCategory(c)}>{c}<span>{c==="全部"?repos.length:repos.filter(r=>r.category===c).length}</span></button>)}</div><label className="search-wrap"><Search size={15}/><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="搜索名称、Topic、能力"/></label></div><div className="advanced-filters"><select value={language} onChange={e=>setLanguage(e.target.value)}><option>全部</option>{languages.slice(1).map(x=><option key={x}>{x}</option>)}</select><select value={fresh} onChange={e=>setFresh(e.target.value)}><option>全部</option>{["近 7 天","近 30 天","近 90 天","更早"].map(x=><option key={x}>{x}</option>)}</select><select value={roleFilter} onChange={e=>setRoleFilter(e.target.value)}><option>全部</option>{roles.slice(1).map(x=><option key={x}>{x}</option>)}</select><select value={sort} onChange={e=>setSort(e.target.value)}><option value="stars">按 Stars</option><option value="fresh">按最近推送</option><option value="name">按名称</option></select></div><div className="directory-meta"><span><Filter size={13}/> {filtered.length} / {repos.length} 条结果 · 收藏 {favorites.length}</span><span>数据源：GitHub API</span></div><div className="directory-layout"><div className="repo-list">{filtered.map((r,i)=><button key={r.fullName} className={`repo-row ${selected.fullName===r.fullName?"is-selected":""}`} onClick={()=>{setSelected(r);history.replaceState(null,"",`?repo=${encodeURIComponent(r.fullName)}`)}}><span className="repo-rank">{String(i+1).padStart(2,"0")}</span><span className="repo-copy"><strong>{r.fullName}</strong><small>{r.description||role(r)}</small></span><span className="repo-tags"><span className="mini-badge mini-badge--green">{r.category}</span><span className="star-count">★ {compact(r.stars)}</span></span><ChevronRight className="repo-chevron" size={16}/></button>)}</div><aside className="repo-detail"><div className="detail-topline"><span>SELECTED / {selected.category}</span><button className="detail-fav" onClick={()=>setFavorites(f=>f.includes(selected.fullName)?f.filter(x=>x!==selected.fullName):[...f,selected.fullName])}><Heart size={16} fill={favorites.includes(selected.fullName)?"#FF5C35":"none"}/></button></div><h3>{selected.fullName}</h3><p className="detail-role">{role(selected)}。{selected.description}</p><div className="detail-stats"><div><small>Stars</small><b>★ {fmt(selected.stars)}</b></div><div><small>Forks</small><b>{fmt(selected.forks)}</b></div><div><small>开放 Issue</small><b>{fmt(selected.openIssues)}</b></div><div><small>语言</small><b>{selected.language}</b></div></div><div className="detail-score"><div><span>维护新鲜度</span><b>{freshness(selected.pushedAt)}</b></div><div><span>岗位适配信号</span><strong>{fit(selected)}</strong><small>/100</small></div></div><div className="detail-divider"/><p className="detail-note"><strong>建议练习</strong><br/>围绕「{role(selected)}」做一个最小可复现项目，记录依赖、验证结果与失败边界。</p><div className="detail-meta"><span>许可证 · {selected.license}</span><span>最近更新 · {new Date(selected.updatedAt).toLocaleDateString("zh-CN")}</span><span>最近推送 · {new Date(selected.pushedAt).toLocaleDateString("zh-CN")}</span><span>{selected.archived?"已归档":"维护中"}</span></div><a className="github-link" href={selected.url} target="_blank" rel="noreferrer"><Github size={15}/>打开原始 GitHub <ExternalLink size={13}/></a></aside></div></div></div></section>
+ <section className="page-frame path-section" id="path"><aside className="section-index"><span>03</span><div/><p>学习<br/>路径</p></aside><div className="section-content"><div className="path-header"><div><p className="kicker">四阶段 Checklist</p><h2>每一步都有<br/><em>可验证的产出。</em></h2></div><div className="progress-sheet"><span>总进度 {done}/{tasks.length}</span><b>{Math.round(done/tasks.length*100)}%</b><i><em style={{width:`${done/tasks.length*100}%`}}/></i><small>{doing} 个任务进行中 · 状态保存在当前浏览器</small></div></div><div className="path-list">{stages.map((s,si)=><div className="path-stage" key={s}><div className="stage-title"><span>0{si+1}</span><h3>{s}</h3><b>{tasks.filter((_,i)=>Math.floor(i/2)===si&&progress[tasks[i].id]==="done").length}/{tasks.filter((_,i)=>Math.floor(i/2)===si).length}</b></div>{tasks.filter((_,i)=>Math.floor(i/2)===si).map(t=><article className={`task-card task-${progress[t.id]||"todo"}`} key={t.id}><div className="task-check">{progress[t.id]==="done"?<Check size={15}/>:<span>{progress[t.id]==="doing"?"·":""}</span>}</div><div className="task-body"><h4>{t.title}</h4><p>{t.description}</p><div className="task-evidence"><span><strong>验证</strong>{t.verification}</span><span><strong>产出</strong>{t.deliverable}</span></div><div className="task-repos">{t.relatedRepos.map(name=><button key={name} onClick={()=>{const r=repos.find(x=>x.fullName===name);if(r){setSelected(r);document.querySelector("#directory")?.scrollIntoView()}}}>{name}<ArrowUpRight size={12}/></button>)}</div></div><select value={progress[t.id]||"todo"} onChange={e=>setTask(t.id,e.target.value as Status)} aria-label={`${t.title}状态`}><option value="todo">未开始</option><option value="doing">进行中</option><option value="done">已完成</option></select></article>)}</div>)}</div></div></section>
+ <section className="insight-strip"><img src="/assets/github-radar-insight.png" alt="信号波纹"/><div><p className="kicker">个人工作台</p><h2>收藏与进度，<em>只属于你的研究副本。</em></h2><p>收藏 {favorites.length} 个仓库 · 完成 {done} 个任务 · 进行中 {doing} 个任务</p><div className="strip-actions"><button onClick={()=>exportReport(false)}><Download size={14}/> Markdown</button><button onClick={()=>exportReport(true)}><Download size={14}/> JSON</button><button onClick={share}><Copy size={14}/> 复制分享链接</button></div></div><div className="strip-facts"><strong>{favorites.length.toString().padStart(2,"0")}</strong><span>我的收藏<br/>LocalStorage</span></div></section>
+ <section className="page-frame method-section" id="method"><aside className="section-index"><span>04</span><div/><p>研究<br/>方法</p></aside><div className="method-content"><div><p className="kicker">口径与边界</p><h2>公开数据，<br/><em>诚实解释。</em></h2></div><div className="method-grid"><article><BookOpen size={17}/><h3>如何采集</h3><p>通过 GitHub 官方 REST API 读取仓库公开元数据；脚本保留仓库清单、字段映射与快照时间，运行后重新生成 JSON 与分析报告。</p></article><article><Radar size={17}/><h3>如何读趋势</h3><p>只使用 pushed_at / updated_at 计算维护新鲜度分组和 90 天活跃比例。不虚构历史 Stars 增长，也不把 GitHub 信号解释为就业市场统计。</p></article><article><Share2 size={17}/><h3>如何保存</h3><p>收藏与任务状态写入当前浏览器 LocalStorage。纯静态网页无法跨设备同步；可导出 Markdown / JSON 作为迁移和备份。</p></article></div></div></section></main><footer className="footer"><a className="footer-brand" href="#top"><Logo/><span><strong>GitHub 雷达</strong><small>AI 应用开发研究工作台</small></span></a><p>数据快照 · {snapshot.toLocaleDateString("zh-CN")} · 公开 API</p><a href="#top">返回顶部 <ArrowDown size={14}/></a></footer></div>;
 }
 
-function LogoMark() {
-  return <img className="logo-mark" src="/manus-storage/github-radar-mark_5a50e609.png" alt="GitHub 雷达标志" />;
-}
+void compact; void ArrowUpRight; void Star; void Copy; void Github; void BookOpen; void CircleDot;
 
-export default function Home() {
-  const [activeCategory, setActiveCategory] = useState("全部");
-  const [query, setQuery] = useState("");
-  const [selectedRepo, setSelectedRepo] = useState<Repository | null>(repoData[1]);
-  const [mobileNavOpen, setMobileNavOpen] = useState(false);
-
-  const filteredRepos = useMemo(() => {
-    const normalizedQuery = query.trim().toLowerCase();
-    return repoData.filter((repo) => {
-      const categoryMatch = activeCategory === "全部" || repo.category === activeCategory;
-      const queryMatch = !normalizedQuery || [repo.fullName, repo.category, repo.role, ...repo.skills]
-        .join(" ")
-        .toLowerCase()
-        .includes(normalizedQuery);
-      return categoryMatch && queryMatch;
-    });
-  }, [activeCategory, query]);
-
-  const exportSummary = () => {
-    const markdown = `# AI 应用开发 GitHub 雷达\n\n数据快照：2026-09-03（GMT+8）\n\n本研究筛选 12 个 AI 应用开发相关开源资源，累计 782,533 Stars 与 169,870 Forks。\n\n${repoData.map((repo) => `- [${repo.fullName}](${repo.url})：${repo.role}；${formatNumber(repo.stars)} Stars；岗位适配度 ${repo.fit}/100。`).join("\n")}\n\n来源：GitHub 公开仓库页面与 API 快照。`;
-    const url = URL.createObjectURL(new Blob([markdown], { type: "text/markdown;charset=utf-8" }));
-    const anchor = document.createElement("a");
-    anchor.href = url;
-    anchor.download = "AI应用开发_GitHub雷达_研究摘要.md";
-    anchor.click();
-    URL.revokeObjectURL(url);
-  };
-
-  const copyLink = async () => {
-    await navigator.clipboard?.writeText(window.location.href);
-  };
-
-  return (
-    <div className="site-shell">
-      <header className="topbar">
-        <a className="brand" href="#top" aria-label="返回顶部">
-          <LogoMark />
-          <span className="brand-lockup"><strong>GitHub 雷达</strong><small>AI 应用开发</small></span>
-        </a>
-        <nav className="desktop-nav" aria-label="主导航">
-          <a href="#overview">生态总览</a>
-          <a href="#directory">资源目录</a>
-          <a href="#path">学习路径</a>
-          <a href="#method">研究方法</a>
-        </nav>
-        <div className="topbar-actions">
-          <span className="snapshot"><CircleDot size={13} />数据快照 · 2026.09.03</span>
-          <Button variant="outline" size="sm" className="export-btn" onClick={exportSummary}><Download size={15} />导出摘要</Button>
-          <button className="mobile-menu" onClick={() => setMobileNavOpen(!mobileNavOpen)} aria-label="切换导航菜单">
-            {mobileNavOpen ? <X size={19} /> : <Menu size={19} />}
-          </button>
-        </div>
-        {mobileNavOpen && <nav className="mobile-nav" aria-label="移动端主导航">
-          <a onClick={() => setMobileNavOpen(false)} href="#overview">生态总览</a>
-          <a onClick={() => setMobileNavOpen(false)} href="#directory">资源目录</a>
-          <a onClick={() => setMobileNavOpen(false)} href="#path">学习路径</a>
-          <a onClick={() => setMobileNavOpen(false)} href="#method">研究方法</a>
-        </nav>}
-      </header>
-
-      <main id="top">
-        <section className="hero-section" aria-labelledby="hero-title">
-          <img className="hero-art" src="/manus-storage/github-radar-hero_53845a77.png" alt="开源生态的抽象雷达等高线图" />
-          <div className="hero-copy">
-            <div className="eyebrow"><span className="eyebrow-dot" /> RESEARCH INDEX / 2026</div>
-            <h1 id="hero-title">从 GitHub 信号<br /><em>到岗位能力。</em></h1>
-            <p>为 AI 应用开发者筛选可落到代码的框架、数据层、质量工具与学习资源；不只看热度，更标注它帮助你交付什么。</p>
-            <div className="hero-cta-row">
-              <Button className="signal-button" asChild><a href="#directory">查看 12 个精选仓库 <ArrowDown size={17} /></a></Button>
-              <button className="quiet-action" onClick={copyLink}><Copy size={15} />复制研究链接</button>
-            </div>
-          </div>
-          <div className="hero-stat-sheet" aria-label="研究概览统计">
-            <div className="sheet-head"><span>研究样本</span><span>01 / 01</span></div>
-            <div className="sheet-main-stat"><strong>12</strong><span>个<br />开源资源</span></div>
-            <div className="stat-rule" />
-            <div className="sheet-grid">
-              <div><small>累计 Stars</small><b>{formatCompact(782533)}</b></div>
-              <div><small>累计 Forks</small><b>{formatCompact(169870)}</b></div>
-              <div><small>能力层</small><b>05</b></div>
-              <div><small>资源类别</small><b>07</b></div>
-            </div>
-          </div>
-          <div className="hero-footnote"><span>注</span> 指标为 GitHub 公开元数据快照；用于观察生态信号，而非岗位需求统计。</div>
-        </section>
-
-        <section className="page-frame overview-section" id="overview" aria-labelledby="overview-title">
-          <aside className="section-index"><span>01</span><div /><p>生态<br />总览</p></aside>
-          <div className="section-content">
-            <div className="section-heading">
-              <div><p className="kicker">生态读数</p><h2 id="overview-title">热度指向入口，<br /><em>能力决定路线。</em></h2></div>
-              <p className="heading-note">在 12 个资源中，学习资源与应用框架汇聚了最多公开关注；质量保障类仓库数量虽少，却以更高的平均岗位适配度构成生产化的关键缺口。</p>
-            </div>
-            <div className="overview-grid">
-              <article className="chart-panel chart-panel--bars">
-                <div className="panel-title"><span><BarChart3 size={17} />类别关注度</span><small>按累计 Stars</small></div>
-                <div className="bar-chart-wrap">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={categoryData} layout="vertical" margin={{ top: 0, right: 24, left: 4, bottom: 0 }}>
-                      <XAxis type="number" hide />
-                      <YAxis dataKey="name" type="category" width={76} tickLine={false} axisLine={false} tick={{ fill: "#52606C", fontSize: 11, fontFamily: "IBM Plex Sans" }} />
-                      <Tooltip cursor={{ fill: "rgba(16,32,45,0.05)" }} contentStyle={{ border: "1px solid #d8d0c3", borderRadius: 0, boxShadow: "none", fontFamily: "DM Mono", fontSize: 12 }} formatter={(value: number) => [`${formatNumber(value)} Stars`, "累计关注"]} />
-                      <Bar dataKey="stars" radius={[0, 3, 3, 0]} barSize={16}>{categoryData.map((item) => <Cell key={item.name} fill={item.color} />)}</Bar>
-                    </BarChart>
-                  </ResponsiveContainer>
-                </div>
-                <p className="panel-caption">“学习资源”包含系统课程、官方示例与路线索引，因此具有更广泛的阅读与 Fork 属性；它不等同于技术选型的排名。</p>
-              </article>
-              <article className="chart-panel chart-panel--radar">
-                <div className="panel-title"><span><Radar size={17} />岗位能力地图</span><small>建议覆盖度</small></div>
-                <div className="radar-chart-wrap">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <RadarChart data={skillData} outerRadius="68%">
-                      <PolarGrid stroke="#d7cfc1" />
-                      <PolarAngleAxis dataKey="subject" tick={{ fill: "#52606C", fontSize: 11, fontFamily: "IBM Plex Sans" }} />
-                      <RadarShape dataKey="score" stroke="#FF5C35" fill="#FF5C35" fillOpacity={0.22} strokeWidth={2} />
-                      <Tooltip contentStyle={{ border: "1px solid #d8d0c3", borderRadius: 0, boxShadow: "none", fontFamily: "DM Mono", fontSize: 12 }} formatter={(value: number) => [`${value}/100`, "覆盖度"]} />
-                    </RadarChart>
-                  </ResponsiveContainer>
-                </div>
-                <p className="panel-caption">覆盖度表示本次入选资源对该能力层的支持强度，不代表个人掌握程度。建议将“评测与可观测性”作为作品集的显性证据。</p>
-              </article>
-              <article className="signal-note">
-                <div className="signal-note-number">01</div>
-                <Sparkles size={24} />
-                <h3>把“会调用模型”升级为“能交付系统”。</h3>
-                <p>优秀项目应同时展示真实数据源、失败处理、质量评测与运行说明。框架只是入口，证据链才是区分度。</p>
-                <a href="#path">查看四阶段路线 <ArrowUpRight size={15} /></a>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section className="directory-section" id="directory" aria-labelledby="directory-title">
-          <div className="page-frame directory-frame">
-            <aside className="section-index section-index--light"><span>02</span><div /><p>资源<br />目录</p></aside>
-            <div className="section-content">
-              <div className="directory-head">
-                <div><p className="kicker kicker--light">可筛选研究目录</p><h2 id="directory-title">找到适合<br /><em>下一步的仓库。</em></h2></div>
-                <p>筛选不会改变原始数据，只会重新组织阅读顺序。点击任一条目查看其岗位价值，再打开原始仓库核验。</p>
-              </div>
-              <div className="directory-controls">
-                <div className="filter-scroll" aria-label="资源分类筛选">
-                  {categories.map((category) => <button key={category} className={activeCategory === category ? "filter-pill is-active" : "filter-pill"} onClick={() => setActiveCategory(category)}>{category}{category !== "全部" && <span>{repoData.filter((repo) => repo.category === category).length}</span>}</button>)}
-                </div>
-                <div className="search-wrap"><Search size={16} /><Input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="搜索仓库、能力或场景" aria-label="搜索资源目录" /></div>
-              </div>
-              <div className="directory-meta"><span><Filter size={14} />显示 {filteredRepos.length} / 12 个资源</span><span>按公开 Stars 排序</span></div>
-              <div className="directory-layout">
-                <div className="repo-list">
-                  {filteredRepos.length ? filteredRepos.map((repo, index) => <button key={repo.fullName} className={selectedRepo?.fullName === repo.fullName ? "repo-row is-selected" : "repo-row"} onClick={() => setSelectedRepo(repo)}>
-                    <span className="repo-rank">{String(index + 1).padStart(2, "0")}</span>
-                    <span className="repo-copy"><strong>{repo.fullName}</strong><small>{repo.role}</small></span>
-                    <span className="repo-tags"><MiniBadge color="green">{repo.category}</MiniBadge><span className="star-count">★ {formatCompact(repo.stars)}</span></span>
-                    <ChevronRight className="repo-chevron" size={17} />
-                  </button>) : <div className="empty-state"><Search size={24} /><p>没有匹配的资源。尝试换一个关键词或重置分类。</p><button onClick={() => { setQuery(""); setActiveCategory("全部"); }}>重置筛选</button></div>}
-                </div>
-                {selectedRepo && <aside className="repo-detail" aria-live="polite">
-                  <div className="detail-topline"><span>研究卡片</span><span>{selectedRepo.stage}</span></div>
-                  <h3>{selectedRepo.fullName}</h3>
-                  <p className="detail-role">{selectedRepo.role}</p>
-                  <div className="detail-score"><div><span>岗位适配度</span><b>{selectedRepo.fit}<small>/100</small></b></div><div className="score-ring"><svg viewBox="0 0 36 36"><path className="ring-base" d="M18 2.0845a15.9155 15.9155 0 0 1 0 31.831a15.9155 15.9155 0 0 1 0-31.831" /><path className="ring-progress" strokeDasharray={`${selectedRepo.fit}, 100`} d="M18 2.0845a15.9155 15.9155 0 0 1 0 31.831a15.9155 15.9155 0 0 1 0-31.831" /></svg></div></div>
-                  <div className="detail-divider" />
-                  <div className="detail-stats"><div><small>Stars</small><b>{formatCompact(selectedRepo.stars)}</b></div><div><small>Forks</small><b>{formatCompact(selectedRepo.forks)}</b></div><div><small>主语言</small><b>{selectedRepo.language}</b></div></div>
-                  <div className="skill-tags"><small>建议练习能力</small><div>{selectedRepo.skills.map((skill) => <MiniBadge key={skill}>{skill}</MiniBadge>)}</div></div>
-                  <div className="researcher-note"><span>研究员批注</span><p>{selectedRepo.verdict}</p></div>
-                  <a className="source-link" href={selectedRepo.url} target="_blank" rel="noreferrer"><Github size={16} />打开原始仓库<ExternalLink size={14} /></a>
-                </aside>}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="page-frame path-section" id="path" aria-labelledby="path-title">
-          <aside className="section-index"><span>03</span><div /><p>学习<br />路径</p></aside>
-          <div className="section-content">
-            <div className="path-header">
-              <div><p className="kicker">从演示到交付</p><h2 id="path-title">作品集应当呈现<br /><em>递进的证据链。</em></h2></div>
-              <div className="path-visual"><img src="/manus-storage/github-radar-path_f91b1da5.png" alt="表示进阶学习路径的抽象索引纸带" /></div>
-            </div>
-            <div className="path-list">
-              {learningPath.map((item) => <article className="path-row" key={item.step}>
-                <span className="path-step">{item.step}</span>
-                <div><h3>{item.title}</h3><p>{item.summary}</p></div>
-                <span className="path-resources">{item.resources}</span>
-                <Target size={19} />
-              </article>)}
-            </div>
-            <div className="portfolio-callout"><CheckCircle2 size={20} /><p><strong>最小可展示单元：</strong>一个真实场景 + 可溯源回答/可控工作流 + 可重复评测 + 清晰 README。四者结合，比堆叠术语更能说明你的 AI 应用开发能力。</p></div>
-          </div>
-        </section>
-
-        <section className="insight-strip">
-          <img src="/manus-storage/github-radar-insight_562095b7.png" alt="抽象信号波纹" />
-          <div><p className="kicker">研究判断</p><h2>不是追逐最多的框架，<br />而是建立完整的<strong>交付闭环</strong>。</h2></div>
-          <div className="strip-facts"><span>01 / 选择真实场景</span><span>02 / 接入可验证数据</span><span>03 / 加入评测与护栏</span></div>
-        </section>
-
-        <section className="page-frame method-section" id="method" aria-labelledby="method-title">
-          <aside className="section-index"><span>04</span><div /><p>研究<br />方法</p></aside>
-          <div className="section-content method-content">
-            <div><p className="kicker">口径与来源</p><h2 id="method-title">透明的筛选，<br /><em>可复查的推荐。</em></h2></div>
-            <div className="method-grid">
-              <article><span>筛选口径</span><p>优先纳入能直接服务于 LLM 应用、RAG、智能体、评测/观测、部署推理，或能产出可展示项目的公开 GitHub 仓库。</p></article>
-              <article><span>质量判断</span><p>综合观察用途清晰度、公开 Stars/Forks、许可、是否归档和近期活动。Stars 仅是社区关注的辅助信号，不构成技术选型结论。</p></article>
-              <article><span>数据来源</span><p>GitHub 公开仓库页面与官方 REST API 快照，采集时间为 2026-09-03（GMT+8）。页面的每个资源链接均直达原始仓库。</p></article>
-              <article><span>阅读提示</span><p>路线资源用于建立能力顺序，案例集合用于场景拆解，框架与基础设施用于实践，质量工具用于把 Demo 变成可评测的工程交付。</p></article>
-            </div>
-            <div className="source-register"><BookOpen size={18} /><span>原始来源索引</span><div>{repoData.map((repo, index) => <a key={repo.fullName} href={repo.url} target="_blank" rel="noreferrer">[{String(index + 1).padStart(2, "0")}] {repo.fullName}</a>)}</div></div>
-          </div>
-        </section>
-      </main>
-
-      <footer className="footer">
-        <div className="footer-brand"><LogoMark /><span><strong>GitHub 雷达</strong><small>AI 应用开发研究索引</small></span></div>
-        <p>数据快照：2026.09.03 · 12 个公开开源资源 · 可筛选、可核验、可导出</p>
-        <a href="#top">返回顶部 <ArrowDown size={14} /></a>
-      </footer>
-    </div>
-  );
-}
