@@ -69,3 +69,8 @@ cp research_data.json client/src/data/research_data.json
 ## v3.1 体验增强
 
 本轮增加了桌面端统一宽度约束、当前路由高亮、页面切换滚动复位、移动菜单自动关闭、键盘焦点样式和 reduced-motion 支持。任务面板增加开始前信息与证据目录命令；资源探索读取并回写 `q`、`category` URL 参数；本地状态增加 `radar-workbench-v1` 版本化聚合快照，同时兼容原有状态 key；工作台支持 JSON 与 Markdown 学习报告导出。
+
+
+## v3.2 任务执行与状态迁移
+
+v3.2 增加阶段门槛、任务开始前信息、证据目录命令、步骤执行提示、非法路线空状态，以及 JSON 进度导入。资源探索新增主语言筛选、Stars/最近更新排序，并将搜索词、分类、语言和排序写入 URL。工作台支持 JSON 备份和 Markdown 学习报告导出。详细计划与限制见 `AI应用工程训练场-v3.2-计划.md`。
