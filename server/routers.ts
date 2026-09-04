@@ -3,7 +3,7 @@ import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
-import { createWorkbenchSnapshot, getWorkbenchState, listWorkbenchSnapshots, saveWorkbenchState } from "./db";
+import { createWorkbenchSnapshot, deleteWorkbenchSnapshot, getWorkbenchState, listWorkbenchSnapshots, saveWorkbenchState } from "./db";
 
 const stateInput = z.object({ state: z.string().max(500_000) });
 const snapshotInput = z.object({ label: z.string().trim().min(1).max(160), state: z.string().max(500_000) });
@@ -23,6 +23,7 @@ export const appRouter = router({
     save: protectedProcedure.input(stateInput).mutation(({ ctx, input }) => saveWorkbenchState(ctx.user.id, input.state)),
     snapshot: protectedProcedure.input(snapshotInput).mutation(({ ctx, input }) => createWorkbenchSnapshot(ctx.user.id, input.label, input.state)),
     snapshots: protectedProcedure.query(({ ctx }) => listWorkbenchSnapshots(ctx.user.id)),
+    deleteSnapshot: protectedProcedure.input(z.object({ id: z.number().int().positive() })).mutation(({ ctx, input }) => deleteWorkbenchSnapshot(ctx.user.id, input.id)),
   }),
 });
 

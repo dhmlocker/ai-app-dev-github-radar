@@ -119,3 +119,10 @@ export async function listWorkbenchSnapshots(userId: number) {
   if (!db) return [];
   return db.select({ id: workbenchSnapshots.id, label: workbenchSnapshots.label, state: workbenchSnapshots.state, createdAt: workbenchSnapshots.createdAt }).from(workbenchSnapshots).where(eq(workbenchSnapshots.userId, userId)).orderBy(desc(workbenchSnapshots.createdAt));
 }
+
+export async function deleteWorkbenchSnapshot(userId: number, id: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database unavailable");
+  await db.delete(workbenchSnapshots).where(eq(workbenchSnapshots.id, id));
+  return { success: true } as const;
+}
